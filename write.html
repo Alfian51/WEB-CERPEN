@@ -40,54 +40,63 @@
     </nav>
 
     <!-- Main Writing Interface -->
-    <main class="container mt-4">
-        <div class="row g-5">
-            <!-- Writing Area -->
-            <div class="col-md-8">
-                <form id="writeForm">
-                    <div class="writing-editor">
-                        <input type="text" class="editor-title" id="cerpenTitle" placeholder="Ketik judul cerpen Anda di sini..." required>
-                        <div class="editor-meta">
-                            <div class="category-selection">
-                                <input type="radio" id="cat-komedi" name="category" value="Komedi" class="category-radio" hidden>
-                                <label for="cat-komedi" class="category-label">Komedi</label>
-
-                                <input type="radio" id="cat-romance" name="category" value="Romance" class="category-radio" hidden>
-                                <label for="cat-romance" class="category-label">Romance</label>
-
-                                <input type="radio" id="cat-horror" name="category" value="Horror" class="category-radio" hidden>
-                                <label for="cat-horror" class="category-label">Horror</label>
-
-                                <input type="radio" id="cat-mistery" name="category" value="Mistery" class="category-radio" hidden>
-                                <label for="cat-mistery" class="category-label">Mistery</label>
-
-                                <input type="radio" id="cat-petualangan" name="category" value="Petualangan" class="category-radio" hidden>
-                                <label for="cat-petualangan" class="category-label">Petualangan</label>
+    <main class="container mt-5">
+        <form id="writeForm">
+            <div class="row g-5">
+                <!-- Left Column: Writing Area -->
+                <div class="col-lg-8">
+                    <div class="mb-4">
+                        <label for="cerpenTitle" class="form-label visually-hidden">Judul Cerpen</label>
+                        <input type="text" class="form-control editor-title" id="cerpenTitle" placeholder="Ketik judul cerpenmu di sini..." required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cerpenContent" class="form-label visually-hidden">Isi Cerita</label>
+                        <textarea class="form-control editor-content" id="cerpenContent" rows="25" placeholder="Mulai tulis ceritamu..." required></textarea>
+                    </div>
+                </div>
+    
+                <!-- Right Column: Metadata & Actions -->
+                <div class="col-lg-4">
+                    <div class="card sticky-top" style="top: 2rem;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Publikasikan</h5>
+                            
+                            <h6 class="mb-3">Pilih Kategori</h6>
+                            <div class="category-select-group mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="category" id="cat-komedi" value="Komedi" required>
+                                    <label class="form-check-label" for="cat-komedi">Komedi</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="category" id="cat-romance" value="Romance">
+                                    <label class="form-check-label" for="cat-romance">Romance</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="category" id="cat-horror" value="Horror">
+                                    <label class="form-check-label" for="cat-horror">Horror</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="category" id="cat-misteri" value="Misteri">
+                                    <label class="form-check-label" for="cat-misteri">Misteri</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="category" id="cat-petualangan" value="Petualangan">
+                                    <label class="form-check-label" for="cat-petualangan">Petualangan</label>
+                                </div>
+                            </div>
+    
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Publikasikan Cerpen</button>
                             </div>
                         </div>
-                        <textarea class="editor-content" id="cerpenContent" placeholder="Mulai tulis cerpen Anda..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg mt-3">Publikasikan Cerpen</button>
-                </form>
-            </div>
-
-            <!-- Side Panel -->
-            <div class="col-md-4">
-                <div class="side-panel">
-                    <h5>Status</h5>
-                    <div id="save-status" class="text-muted small mb-3">Siap menulis.</div>
-                    
-                    <h5>Statistik</h5>
-                    <div id="word-count" class="text-muted small mb-4">0 Kata, 0 Karakter</div>
-
-                    <h5>Tips Menulis</h5>
-                    <div class="tips-box">
-                        <p class="small text-muted">"Mulailah dengan satu kalimat yang benar."</p>
-                        <p class="small text-muted">- Ernest Hemingway</p>
+                    <div class="text-muted small mt-3">
+                        <p id="save-status" class="mb-1">Mulai menulis untuk menyimpan draf.</p>
+                        <p id="word-count" class="mb-0">0 Kata, 0 Karakter</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
