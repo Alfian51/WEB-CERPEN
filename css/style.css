@@ -91,6 +91,11 @@ main h1 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
 .cta-section h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
 .main-footer { padding: 2rem 0; background-color: #343a40; color: #f8f9fa; }
 
+/* Story Page Specifics */
+.story-body p {
+    margin-bottom: 1.25rem; /* Add clear spacing between paragraphs */
+}
+
 /* --- WRITE PAGE ENHANCEMENTS --- */
 .editor-title { border: none; font-size: 2.5rem; font-weight: 700; font-family: 'Montserrat', sans-serif; padding: 0.5rem 0; }
 .editor-title:focus { box-shadow: none; }
