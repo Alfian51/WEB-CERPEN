@@ -1,26 +1,34 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import pool from './lib/db.js'; // Import the PostgreSQL pool
+import pool from './db.js'; // pastikan path ini benar
 
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.')); // Serve static files from the current directory
+app.use(express.static('.')); // serve static files
 
-// Test Database Connection Endpoint
+// Endpoint test koneksi database Neon
 app.get('/api/test-db', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT NOW()');
-        res.send(`Database connected successfully! Current time: ${result.rows[0].now}`);
-    } catch (err) {
-        console.error('Database connection error:', err);
-        res.status(500).send('Failed to connect to database.');
-    }
+  try {
+    const result = await pool.query('SELECT NOW()'); 
+    res.status(200).json({
+      success: true,
+      message: 'Koneksi database berhasil!',
+      time: result.rows[0].now,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      message: 'Koneksi database gagal!',
+      error: err.message,
+    });
+  }
 });
 
 // --- API Endpoints for Stories ---
@@ -156,5 +164,5 @@ app.post('/api/stories/:id/comments', async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server berjalan di port ${port}`);
 });
